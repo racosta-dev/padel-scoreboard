@@ -1,0 +1,9 @@
+<menu2 id="PauseMenu" title="@Strings.Pause_Title">
+	<menu-item id="Pause_Resume" label="@Strings.Pause_Resume" />
+	<menu-item id="Pause_UndoLastPoint"
+		label="@Strings.Pause_UndoLastPoint" />
+	<menu-item id="Pause_NewMatch"
+		label="@Strings.Pause_NewMatch" />
+
+	<menu-item id="Pause_Exit" label="@Strings.Pause_Exit" />
+</menu2>

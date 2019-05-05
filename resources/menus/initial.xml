@@ -1,0 +1,21 @@
+<menu2 id="InitialMenu" title="@Strings.Initial_Title">
+	<menu-item id="Initial_StartMatch"
+		label="@Strings.Initial_StartMatch" />
+	<menu-item id="Initial_ServerConfig"
+		label="@Strings.Initial_ServerConfig"
+		subLabel="-" />
+	<menu-item id="Initial_SetsConfig"
+		label="@Strings.Initial_SetsConfig"
+		subLabel="-" />
+	<menu-item id="Initial_TiebreakConfig"
+		label="@Strings.Initial_TiebreakConfig"
+		subLabel="-" />
+	<menu-item id="Initial_GoldenPointConfig"
+		label="@Strings.Initial_GoldenPointConfig"
+		subLabel="-" />
+	<menu-item id="Initial_GamesConfig"
+		label="@Strings.Initial_GamesConfig"
+		subLabel="@Strings.Initial_DefaultGamesConfig" />
+
+	<menu-item id="Initial_Exit" label="@Strings.Initial_Exit" />
+</menu2>

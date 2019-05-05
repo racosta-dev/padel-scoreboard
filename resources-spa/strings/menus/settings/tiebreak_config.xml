@@ -1,0 +1,5 @@
+<strings>
+    <string id="TiebreakConfig_Yes">Sí</string>
+    <string id="TiebreakConfig_No">No</string>
+    <string id="TiebreakConfig_ExceptInLastSet">Salvo en el último set</string>
+</strings>

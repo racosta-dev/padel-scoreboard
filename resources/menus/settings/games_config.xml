@@ -1,0 +1,6 @@
+<menu2 id="GamesConfigMenu" title="@Strings.GamesConfig_Title">
+    <menu-item id="GamesConfig_SixGames" label="@Strings.GamesConfig_SixGames" />
+    <menu-item id="GamesConfig_FourGames" label="@Strings.GamesConfig_FourGames" />
+    <menu-item id="GamesConfig_TwoGames" label="@Strings.GamesConfig_TwoGames" />
+    <menu-item id="GamesConfig_Tiebreak" label="@Strings.GamesConfig_Tiebreak" />
+</menu2>

@@ -1,0 +1,7 @@
+<strings>
+    <string id="TiebreakConfig_Title">Tiebreak</string>
+    
+    <string id="TiebreakConfig_Yes">Yes</string>
+    <string id="TiebreakConfig_No">No</string>
+    <string id="TiebreakConfig_ExceptInLastSet">Except in last set</string>
+</strings>

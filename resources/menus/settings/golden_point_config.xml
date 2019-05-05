@@ -1,0 +1,4 @@
+<menu2 id="GoldenPointConfigMenu" title="@Strings.GoldenPointConfig_Title">
+    <menu-item id="GoldenPointConfig_Yes" label="@Strings.GoldenPointConfig_Yes"/>
+    <menu-item id="GoldenPointConfig_No" label="@Strings.GoldenPointConfig_No" />
+</menu2>

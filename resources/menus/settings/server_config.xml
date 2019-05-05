@@ -1,0 +1,4 @@
+<menu2 id="ServerConfigMenu" title="@Strings.ServerConfig_Title">
+    <menu-item id="ServerConfig_Home" label="@Strings.ServerConfig_Home" />
+    <menu-item id="ServerConfig_Away" label="@Strings.ServerConfig_Away" />
+</menu2>

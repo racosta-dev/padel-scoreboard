@@ -1,0 +1,10 @@
+<strings>
+    <string id="Initial_StartMatch">Iniciar partido</string>
+    <string id="Initial_ServerConfig">Sacador inicial</string>
+    <string id="Initial_SetsConfig">Sets</string>
+    <string id="Initial_TiebreakConfig">Tiebreak</string>
+    <string id="Initial_GoldenPointConfig">Punto de oro</string>
+    <string id="Initial_GamesConfig">Juegos por set</string>
+    
+    <string id="Initial_Exit">Salir</string>
+</strings>

@@ -1,0 +1,19 @@
+<strings>
+    <string id="Initial_Title">New match</string>
+    
+    <string id="Initial_StartMatch">Start match</string>
+    <string id="Initial_ServerConfig">Server</string>
+    <string id="Initial_SetsConfig">Sets</string>
+    <string id="Initial_TiebreakConfig">Tiebreak</string>
+    <string id="Initial_GoldenPointConfig">Golden point</string>
+    <string id="Initial_GamesConfig">Games per set</string>
+    
+    <string id="Initial_Exit">Exit</string>
+    
+	<!-- Default values -->
+    <string id="Initial_DefaultServerConfig">Home</string>
+    <string id="Initial_DefaultSetsConfig">3 Sets</string>
+    <string id="Initial_DefaultTiebreakConfig">Yes</string>
+    <string id="Initial_DefaultGoldenPointConfig">No</string>
+    <string id="Initial_DefaultGamesConfig">${GAMES_PER_SET} Games</string>
+</strings>

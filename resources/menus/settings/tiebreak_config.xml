@@ -1,0 +1,5 @@
+<menu2 id="TiebreakConfigMenu" title="@Strings.TiebreakConfig_Title">
+    <menu-item id="TiebreakConfig_Yes" label="@Strings.TiebreakConfig_Yes" />
+    <menu-item id="TiebreakConfig_No" label="@Strings.TiebreakConfig_No" />
+    <menu-item id="TiebreakConfig_ExceptInLastSet" label="@Strings.TiebreakConfig_Yes" subLabel="@Strings.TiebreakConfig_ExceptInLastSet" />
+</menu2>

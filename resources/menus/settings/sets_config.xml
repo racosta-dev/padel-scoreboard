@@ -1,0 +1,5 @@
+<menu2 id="SetsConfigMenu" title="@Strings.SetsConfig_Title">
+    <menu-item id="SetsConfig_OneSet" label="@Strings.SetsConfig_OneSet" />
+    <menu-item id="SetsConfig_ThreeSets" label="@Strings.SetsConfig_ThreeSets" />
+    <menu-item id="SetsConfig_FiveSets" label="@Strings.SetsConfig_FiveSets" />
+</menu2>
