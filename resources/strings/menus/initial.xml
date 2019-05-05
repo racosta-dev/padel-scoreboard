@@ -15,5 +15,5 @@
     <string id="Initial_DefaultSetsConfig">3 Sets</string>
     <string id="Initial_DefaultTiebreakConfig">Yes</string>
     <string id="Initial_DefaultGoldenPointConfig">No</string>
-    <string id="Initial_DefaultGamesConfig">${GAMES_PER_SET} Games</string>
+    <string id="Initial_DefaultGamesConfig">6 Games</string>
 </strings>

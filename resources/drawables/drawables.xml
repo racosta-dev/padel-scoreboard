@@ -1,3 +1,4 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <bitmap id="ShovelIcon" x="center" y="30" filename="shovel_icon.png" />
 </drawables>

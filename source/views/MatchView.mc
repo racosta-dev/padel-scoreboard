@@ -28,5 +28,5 @@ class MatchView extends WatchUi.View {
     // memory.
     function onHide() {
     }
-
+    
 }

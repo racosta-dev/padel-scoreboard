@@ -8,7 +8,7 @@ class PadelScoreboardView extends WatchUi.View {
 
     // Load your resources here
     function onLayout(dc) {
-        setLayout(Rez.Layouts.MatchLayout(dc));
+        setLayout(Rez.Layouts.HomeLayout(dc));
     }
 
     // Called when this View is brought to the foreground. Restore
