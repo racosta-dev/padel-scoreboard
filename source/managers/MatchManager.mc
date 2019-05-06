@@ -21,10 +21,11 @@ module MatchManager {
 		} else { 
 			var dictionary = Storage.getValue(Properties.CURRENT_MATCH);
 			
-			var currentMatch = new Match(matchConfig);
-			currentMatch.fromDictionary(dictionary);
-			
-			$.match = currentMatch;
+			if (dictionary != null) {
+				var currentMatch = new Match(matchConfig);
+				currentMatch.fromDictionary(dictionary);
+				$.match = currentMatch;
+			}
 			
 			$.pointDetails = Storage.getValue(Properties.POINT_DETAILS);
 			
