@@ -13,7 +13,6 @@ class Match {
 	var homeScore;
 	var awayScore;
 	
-	var server;
 	var winner;
 	
 	var set;
@@ -41,7 +40,6 @@ class Match {
 			"homeScore" => homeScore,
 			"awayScore" => awayScore,
 			"winner" => winner,
-			"server" => server,
 			"set" => set.toDictionary()
 			};
 	}
@@ -61,9 +59,57 @@ class Match {
 		awayScore = dictionary.get("awayScore");
 	
 		winner = dictionary.get("winner");
-		server = dictionary.get("server");
 		
 		set = new Set(matchConfig);
 		set.fromDictionary(dictionary.get("set"));
+	}
+	
+	function score(team) {
+		var matchHasWinner = false;
+		var setHasWinner = set.score(team);
+		
+		matchConfig.startingServer = set.server;
+		
+		homeScores[setsPlayed] = set.homeScore;
+		awayScores[setsPlayed] = set.awayScore;
+		
+		if (setHasWinner) {
+			increaseTeamScore(team);
+			
+			set = new Set(matchConfig);
+			
+			setsPlayed++;
+		}
+		
+		if (getTeamScore(team) >= setsToWin) {
+			winner = team;
+			matchHasWinner = true;
+		}
+	
+		return matchHasWinner;
+	}
+	
+	hidden function increaseTeamScore(team) {
+		if (team == MatchConstants.HOME_TEAM) {
+			homeScore++;
+		} else {
+			awayScore++;
+		}
+	}
+	
+	hidden function getTeamScore(team) {
+		if (team == MatchConstants.HOME_TEAM) {
+			return homeScore;
+		} else {
+			return awayScore;
+		}
+	}
+	
+	hidden function getRivalScore(team) {
+		if (team == MatchConstants.HOME_TEAM) {
+			return awayScore;
+		} else {
+			return homeScore;
+		}
 	}
 }

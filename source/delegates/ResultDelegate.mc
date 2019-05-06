@@ -1,6 +1,6 @@
 using Toybox.WatchUi;
 
-class MatchDelegate extends WatchUi.BehaviorDelegate {
+class ResultDelegate extends WatchUi.BehaviorDelegate {
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -21,24 +21,5 @@ class MatchDelegate extends WatchUi.BehaviorDelegate {
     function onBack() {
     	System.exit();
     }
-    
-    function onTap(event) {
-    	var matchHasWinner;
-    	
-		var center = $.device.screenHeight / 2;
-		if (event.getCoordinates()[0] < center) {
-			matchHasWinner = MatchManager.scoreHome();
-		} else {
-			matchHasWinner = MatchManager.scoreAway();
-		}
-		
-		if (matchHasWinner) {
-			WatchUi.pushView(new ResultView(), new ResultDelegate(), WatchUi.SLIDE_UP);
-		}
-		
-		WatchUi.requestUpdate();
-		
-		return true;
-	}
 
 }

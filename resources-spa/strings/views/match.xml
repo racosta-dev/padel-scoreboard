@@ -1,12 +1,12 @@
 <strings>
-    <string id="Match_Sets">Sets</string>
-    <string id="Match_Games">Juegos</string>
+    <string id="Match_Sets">SETS</string>
+    <string id="Match_Games">JUEGOS</string>
     
-    <string id="Match_Home">Local</string>
-    <string id="Match_Away">Visitante</string>
+    <string id="Match_Home">LOCAL</string>
+    <string id="Match_Away">VISIT.</string>
     
-    <string id="Match_PointLength">Duración del punto:</string>
-    <string id="Match_GameLength">Duración del juego:</string>
-    <string id="Match_SetLength">Duración del set:</string>
-    <string id="Match_MatchLength">Duración del partido:</string>
+    <string id="Match_PointLength">DURACIÓN DEL PUNTO:</string>
+    <string id="Match_GameLength">DURACIÓN DEL JUEGO:</string>
+    <string id="Match_SetLength">DURACIÓN DEL SET:</string>
+    <string id="Match_MatchLength">DURACIÓN DEL PARTIDO:</string>
 </strings>

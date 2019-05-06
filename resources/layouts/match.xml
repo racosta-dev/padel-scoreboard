@@ -5,34 +5,34 @@
 
 	<!-- Current match score labels -->
 	<label x="dc.getWidth() / 2 - 30" y="dc.getHeight() / 2 - 108"
-		text="@Strings.Match_Sets" color="Graphics.COLOR_RED"
+		text="@Strings.Match_Sets" color="Graphics.COLOR_WHITE"
 		font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
 	<label id="Match_HomeSets" x="dc.getWidth() / 2 - 10"
-		y="dc.getHeight() / 2 - 120" text="0" color="Graphics.COLOR_RED"
+		y="dc.getHeight() / 2 - 120" text="0" color="Graphics.COLOR_WHITE"
 		font="Graphics.FONT_NUMBER_MILD"
 		justification="Graphics.TEXT_JUSTIFY_RIGHT" />
 	<label id="Match_AwaySets" x="dc.getWidth() / 2 + 10"
-		y="dc.getHeight() / 2 - 120" text="0" color="Graphics.COLOR_RED"
+		y="dc.getHeight() / 2 - 120" text="0" color="Graphics.COLOR_WHITE"
 		font="Graphics.FONT_NUMBER_MILD"
 		justification="Graphics.TEXT_JUSTIFY_LEFT" />
 	<label x="dc.getWidth() / 2 + 30" y="dc.getHeight() / 2 - 108"
-		text="@Strings.Match_Sets" color="Graphics.COLOR_RED"
+		text="@Strings.Match_Sets" color="Graphics.COLOR_WHITE"
 		font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" />
 
 	<!-- Current set score labels -->
 	<label x="dc.getWidth() / 2 - 30" y="dc.getHeight() / 2 - 78"
-		text="@Strings.Match_Games" color="Graphics.COLOR_YELLOW"
+		text="@Strings.Match_Games" color="Graphics.COLOR_WHITE"
 		font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
 	<label id="Match_HomeGames" x="dc.getWidth() / 2 - 10"
-		y="dc.getHeight() / 2 - 90" text="0" color="Graphics.COLOR_YELLOW"
+		y="dc.getHeight() / 2 - 90" text="0" color="Graphics.COLOR_WHITE"
 		font="Graphics.FONT_NUMBER_MILD"
 		justification="Graphics.TEXT_JUSTIFY_RIGHT" />
 	<label id="Match_AwayGames" x="dc.getWidth() / 2 + 10"
-		y="dc.getHeight() / 2 - 90" text="0" color="Graphics.COLOR_YELLOW"
+		y="dc.getHeight() / 2 - 90" text="0" color="Graphics.COLOR_WHITE"
 		font="Graphics.FONT_NUMBER_MILD"
 		justification="Graphics.TEXT_JUSTIFY_LEFT" />
 	<label x="dc.getWidth() / 2 + 30" y="dc.getHeight() / 2 - 78"
-		text="@Strings.Match_Games" color="Graphics.COLOR_YELLOW"
+		text="@Strings.Match_Games" color="Graphics.COLOR_WHITE"
 		font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" />
 
 	<!-- Current game score labels -->

@@ -11,5 +11,11 @@ module MatchConstants {
 	
 	// Score names
 	const SCORE_NAMES = [ "0", "15", "30", "40", "A" ];
+	
+	// Points necessary to win a game
+	const POINTS_PER_GAME = 4;
+	
+	// Points necessary to win a tiebreak
+	const POINTS_PER_TIEBREAK = 7;
 
 }

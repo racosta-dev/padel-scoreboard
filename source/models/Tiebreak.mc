@@ -1,9 +1,8 @@
-using Toybox.System;
-
 class Tiebreak extends Game {
 
 	function initialize(config) {
 		Game.initialize(config);
+		pointsPerGame = MatchConstants.POINTS_PER_TIEBREAK;
 	}
 	
 	function translateHomeScore() {
@@ -15,10 +14,9 @@ class Tiebreak extends Game {
 	}
 	
 	function needServerChange() {
-	
 		var change = false;
 		
-		if ((homeScore + homeScore) % 2 != 0) {
+		if ((homeScore + awayScore) % 2 != 0) {
 			change = true;
 		}
 	
