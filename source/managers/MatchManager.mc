@@ -25,6 +25,10 @@ module MatchManager {
 		System.println("Away team scores");
 	}
 	
+	function undoLastPoint() {
+		System.println("Undo last point");
+	}
+	
 	function startMatch() {
 		System.println("Starting new match");
 		match = new Match(matchConfig);
