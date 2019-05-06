@@ -16,6 +16,24 @@ class MatchConfiguration {
 		gamesPerSet = MatchDefaults.GAMES_PER_SET;
 	}
 	
+	function toDictionary() {
+		return {
+			"startingServer" => startingServer,
+			"setsPerMatch" => setsPerMatch,
+			"tiebreak" => tiebreak,
+			"goldenPoint" => goldenPoint,
+			"gamesPerSet" => gamesPerSet
+			};
+	}
+	
+	function fromDictionary(dictionary) {
+		startingServer = dictionary.get("startingServer");
+		setsPerMatch = dictionary.get("setsPerMatch");
+		tiebreak = dictionary.get("tiebreak");
+		goldenPoint = dictionary.get("goldenPoint");
+		gamesPerSet = dictionary.get("gamesPerSet");
+	}
+	
 	function toString() {
 		return "{ startingServer: " + TranslateUtils.translateTeam(startingServer) +
 				", setsPerMatch: " + setsPerMatch +

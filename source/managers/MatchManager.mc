@@ -1,16 +1,21 @@
 using Toybox.System;
+using Toybox.Attention;
+using Toybox.Application;
+
+using AppConstants.Properties;
 
 var match = null;
 
 module MatchManager {
 
 	var matchConfig = new MatchConfiguration();
+	var app = Application.getApp();
 
 	function matchAlreadyRunning() {
 	
-		// TODO recover match
+		$.match = app.getProperty(Properties.CURRENT_MATCH);
 	
-		if (match != null) {
+		if ($.match != null) {
 			return true;
 		} else { 
 			return false;
@@ -18,7 +23,19 @@ module MatchManager {
 	}
 	
 	function scoreHome() {
+		
+		if (Attention has :vibrate) {
+	    	Attention.vibrate([new Attention.VibeProfile(50, 100)]);
+    	}
+    	
 		System.println("Home team scores");
+		
+		// save current match last point
+		// score
+		// save current match current point
+		
+		// match.scoreHome() -> set.scoreHome() -> game.scoreHome()
+		// gameEnded, setEnded, matchEnded ?
 	}
 	
 	function scoreAway() {
@@ -27,6 +44,14 @@ module MatchManager {
 	
 	function undoLastPoint() {
 		System.println("Undo last point");
+		var dictionary = app.getProperty(Properties.LAST_POINT);
+		
+		if (dictionary != null) {
+			var lastPointMatch = new Match(matchConfig);
+			lastPointMatch.fromDictionary(dictionary);
+			
+			$.match = lastPointMatch;
+		}
 	}
 	
 	function startMatch() {
