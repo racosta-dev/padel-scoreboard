@@ -1,4 +1,64 @@
 <layout id="MatchLayout">
-    <label x="center" y="center" text="Welcome" color="Graphics.COLOR_WHITE" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <bitmap id="id_monkey" x="center" y="30" filename="../drawables/monkey.png" />
+
+	<!-- Current match score board -->
+	<drawable id="Match_Scoreboard" />
+
+	<!-- Current match score labels -->
+	<label x="dc.getWidth() / 2 - 30" y="dc.getHeight() / 2 - 108"
+		text="@Strings.Match_Sets" color="Graphics.COLOR_RED"
+		font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
+	<label id="Match_HomeSets" x="dc.getWidth() / 2 - 10"
+		y="dc.getHeight() / 2 - 120" text="0" color="Graphics.COLOR_RED"
+		font="Graphics.FONT_NUMBER_MILD"
+		justification="Graphics.TEXT_JUSTIFY_RIGHT" />
+	<label id="Match_AwaySets" x="dc.getWidth() / 2 + 10"
+		y="dc.getHeight() / 2 - 120" text="0" color="Graphics.COLOR_RED"
+		font="Graphics.FONT_NUMBER_MILD"
+		justification="Graphics.TEXT_JUSTIFY_LEFT" />
+	<label x="dc.getWidth() / 2 + 30" y="dc.getHeight() / 2 - 108"
+		text="@Strings.Match_Sets" color="Graphics.COLOR_RED"
+		font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" />
+
+	<!-- Current set score labels -->
+	<label x="dc.getWidth() / 2 - 30" y="dc.getHeight() / 2 - 78"
+		text="@Strings.Match_Games" color="Graphics.COLOR_YELLOW"
+		font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
+	<label id="Match_HomeGames" x="dc.getWidth() / 2 - 10"
+		y="dc.getHeight() / 2 - 90" text="0" color="Graphics.COLOR_YELLOW"
+		font="Graphics.FONT_NUMBER_MILD"
+		justification="Graphics.TEXT_JUSTIFY_RIGHT" />
+	<label id="Match_AwayGames" x="dc.getWidth() / 2 + 10"
+		y="dc.getHeight() / 2 - 90" text="0" color="Graphics.COLOR_YELLOW"
+		font="Graphics.FONT_NUMBER_MILD"
+		justification="Graphics.TEXT_JUSTIFY_LEFT" />
+	<label x="dc.getWidth() / 2 + 30" y="dc.getHeight() / 2 - 78"
+		text="@Strings.Match_Games" color="Graphics.COLOR_YELLOW"
+		font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" />
+
+	<!-- Current game score labels -->
+	<label id="Match_HomePoints" x="dc.getWidth() / 2 - 55"
+		y="center" text="0" color="Graphics.COLOR_WHITE"
+		font="Graphics.FONT_SYSTEM_NUMBER_HOT"
+		justification="Graphics.TEXT_JUSTIFY_CENTER" />
+	<label id="Match_AwayPoints" x="dc.getWidth() / 2 + 55"
+		y="center" text="0" color="Graphics.COLOR_WHITE"
+		font="Graphics.FONT_SYSTEM_NUMBER_HOT"
+		justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+	<!-- Team labels -->
+	<label x="dc.getWidth() / 2 - 50" y="dc.getHeight() / 2 + 50"
+		text="@Strings.Match_Home" font="Graphics.FONT_TINY"
+		justification="Graphics.TEXT_JUSTIFY_CENTER" />
+	<label x="dc.getWidth() / 2 + 50" y="dc.getHeight() / 2 + 50"
+		text="@Strings.Match_Away" font="Graphics.FONT_TINY"
+		justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+	<!-- Time information -->
+	<label id="Match_CurrentTimeDescription" x="center"
+		y="dc.getHeight() - Graphics.getFontHeight(Graphics.FONT_XTINY) * 2"
+		font="Graphics.FONT_XTINY"
+		justification="Graphics.TEXT_JUSTIFY_CENTER" />
+	<label id="Match_CurrentTime" x="center"
+		y="dc.getHeight() - Graphics.getFontHeight(Graphics.FONT_TINY)"
+		font="Graphics.FONT_TINY" justification="Graphics.TEXT_JUSTIFY_CENTER" />
 </layout>

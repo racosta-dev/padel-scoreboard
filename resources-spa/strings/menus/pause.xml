@@ -1,4 +1,6 @@
 <strings>
+    <string id="Pause_Title">Menú de pausa</string>
+    
     <string id="Pause_Resume">Reanudar</string>
     <string id="Pause_UndoLastPoint">Deshacer último punto</string>
     <string id="Pause_NewMatch">Nuevo partido</string>

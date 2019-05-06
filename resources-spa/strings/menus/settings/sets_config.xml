@@ -1,4 +1,6 @@
 <strings>
+    <string id="SetsConfig_Title">Sets</string>
+    
     <string id="SetsConfig_OneSet">1 Set</string>
     <string id="SetsConfig_ThreeSets">3 Sets</string>
     <string id="SetsConfig_FiveSets">5 Sets</string>

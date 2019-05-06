@@ -1,4 +1,14 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="launcher_icon.png" />
     <bitmap id="ShovelIcon" x="center" y="30" filename="shovel_icon.png" />
+    
+    <drawable-list id="Match_Scoreboard"
+		background="Gfx.COLOR_BLACK">
+		<shape type="rectangle" x="dc.getWidth() / 2 - 105" y="center"
+			width="100" height="100" color="Gfx.COLOR_BLACK" border_width="2"
+			border_color="Gfx.COLOR_WHITE" />
+		<shape type="rectangle" x="dc.getWidth() / 2 + 5" y="center"
+			width="100" height="100" color="Gfx.COLOR_BLACK" border_width="2"
+			border_color="Gfx.COLOR_WHITE" />
+	</drawable-list>
 </drawables>

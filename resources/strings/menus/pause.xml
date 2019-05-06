@@ -1,5 +1,5 @@
 <strings>
-    <string id="Pause_Title">Pause Menu</string>
+    <string id="Pause_Title">Pause menu</string>
     
     <string id="Pause_Resume">Resume</string>
     <string id="Pause_UndoLastPoint">Undo last point</string>

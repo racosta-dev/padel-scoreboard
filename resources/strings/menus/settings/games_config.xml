@@ -5,6 +5,4 @@
     <string id="GamesConfig_FourGames">4 Games</string>
     <string id="GamesConfig_TwoGames">2 Games</string>
     <string id="GamesConfig_Tiebreak">Tiebreak</string>
-    
-    <string id="GamesConfig_CurrentValue">${GAMES_PER_SET} Games</string>
 </strings>

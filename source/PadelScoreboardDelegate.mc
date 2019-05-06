@@ -7,18 +7,18 @@ class PadelScoreboardDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() {
-        WatchUi.pushView(new Rez.Menus.InitialMenu(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.pushView(new InitialMenuView(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
         return true;
     }
 
     function onSelect() {
-        WatchUi.pushView(new Rez.Menus.InitialMenu(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.pushView(new InitialMenuView(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
         return true;
     }
     
     function onKey(keyEvent) {
         if (keyEvent.getKey() == 4) {
-        	WatchUi.pushView(new Rez.Menus.InitialMenu(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
+        	WatchUi.pushView(new InitialMenuView(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
         }
         return true;
     }
