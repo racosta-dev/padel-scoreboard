@@ -1,6 +1,7 @@
 using Toybox.System;
 using Toybox.Attention;
 using Toybox.Application;
+using Toybox.Application.Storage;
 
 using AppConstants.Properties;
 using MatchConstants;
@@ -14,12 +15,17 @@ module MatchManager {
 
 	function matchAlreadyRunning() {
 	
-		if (match != null) {
+		if ($.match != null) {
 			return true;
 		} else { 
-			match = app.getProperty(Properties.CURRENT_MATCH);
+			var dictionary = Storage.getValue(Properties.CURRENT_MATCH);
 			
-			if (match != null) {
+			var currentMatch = new Match(matchConfig);
+			currentMatch.fromDictionary(dictionary);
+			
+			$.match = currentMatch;
+			
+			if ($.match != null) {
 				return true;
 			} else {
 				return false;
@@ -40,13 +46,13 @@ module MatchManager {
 	    	Attention.vibrate([new Attention.VibeProfile(50, 100)]);
     	}
     	
-    	return match.score(team);
-		// save current match last point
-		// score
-		// save current match current point
-		
-		// match.scoreHome() -> set.scoreHome() -> game.scoreHome()
-		// gameEnded, setEnded, matchEnded ?
+    	Storage.setValue(Properties.LAST_POINT, $.match.toDictionary());
+    	
+    	var matchHasWinner = $.match.score(team);
+    	
+    	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
+    	
+    	return matchHasWinner;
 	}
 	
 	function undoLastPoint() {
@@ -57,7 +63,7 @@ module MatchManager {
 			var lastPointMatch = new Match(matchConfig);
 			lastPointMatch.fromDictionary(dictionary);
 			
-			match = lastPointMatch;
+			$.match = lastPointMatch;
 		}
 	}
 	

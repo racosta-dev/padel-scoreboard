@@ -18,7 +18,6 @@ class Match {
 	var set;
 
 	function initialize(config) {
-		System.println(config.toString());
 		matchConfig = config;
 		winner = null;
 		homeScores = new [matchConfig.setsPerMatch];
