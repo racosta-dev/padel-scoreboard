@@ -2,6 +2,8 @@ using Toybox.Application;
 using Toybox.WatchUi;
 using Toybox.System;
 
+using AppConstants.Properties;
+
 var device = System.getDeviceSettings();
 
 class PadelScoreboardApp extends Application.AppBase {
@@ -16,6 +18,7 @@ class PadelScoreboardApp extends Application.AppBase {
 
     // onStop() is called when your application is exiting
     function onStop(state) {
+    	Storage.setValue(Properties.POINT_DETAILS, $.pointDetails);
     }
 
     // Return the initial view of your application here

@@ -4,6 +4,7 @@
     <string id="Pause_Resume">Resume</string>
     <string id="Pause_UndoLastPoint">Undo last point</string>
     <string id="Pause_NewMatch">New match</string>
+    <string id="Pause_DeletePointsData">Delete points data</string>
     
     <string id="Pause_Exit">Exit</string>
 </strings>
