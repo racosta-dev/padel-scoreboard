@@ -1,4 +1,5 @@
 using Toybox.WatchUi;
+
 using ViewManager;
 
 class MatchDelegate extends WatchUi.BehaviorDelegate {
@@ -34,7 +35,7 @@ class MatchDelegate extends WatchUi.BehaviorDelegate {
 		}
 		
 		if ($.match.winner != null) {
-			WatchUi.pushView(new ResultView(), new ResultDelegate(), WatchUi.SLIDE_UP);
+			WatchUi.pushView(ViewManager.resultView(), new ResultDelegate(), WatchUi.SLIDE_UP);
 		}
 		
 		WatchUi.requestUpdate();

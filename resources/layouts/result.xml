@@ -9,12 +9,12 @@
 		justification="Graphics.TEXT_JUSTIFY_CENTER" />
 		
 	<label x="center"
-		y="dc.getHeight() / 2 + Graphics.getFontHeight(Graphics.FONT_LARGE) * 2"
+		y="dc.getHeight() / 2 + Graphics.getFontHeight(Graphics.FONT_TINY) * 2"
 		text="@Strings.Result_MatchLength" font="Graphics.FONT_XTINY"
 		color="Graphics.COLOR_GREEN"
 		justification="Graphics.TEXT_JUSTIFY_CENTER" />
 	<label id="Result_MatchLength" x="center"
-		y="dc.getHeight() / 2 + Graphics.getFontHeight(Graphics.FONT_LARGE) * 2 + Graphics.getFontHeight(Graphics.FONT_XTINY)"
+		y="dc.getHeight() / 2 + Graphics.getFontHeight(Graphics.FONT_TINY) * 2 + 15"
 		text="0" font="Graphics.FONT_LARGE" color="Graphics.COLOR_GREEN"
 		justification="Graphics.TEXT_JUSTIFY_CENTER" />
 </layout>

@@ -1,5 +1,6 @@
 var padelScoreboardView;
 var matchView;
+var resultView;
 
 var pauseMenu;
 var initialMenu;
@@ -26,6 +27,14 @@ module ViewManager {
 		}
 		
 		return $.matchView;
+	}
+	
+	function resultView() {
+		if ($.resultView == null) {
+			$.resultView = new ResultView();
+		}
+		
+		return $.resultView;
 	}
 	
 	function pauseMenu() {

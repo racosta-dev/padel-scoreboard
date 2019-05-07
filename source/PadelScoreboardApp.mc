@@ -25,7 +25,11 @@ class PadelScoreboardApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() {
     	if (MatchManager.matchAlreadyRunning()) {
-        	return [ ViewManager.matchView(), new MatchDelegate() ];
+    		if ($.match.winner == null) {
+        		return [ ViewManager.matchView(), new MatchDelegate() ];
+        	} else {
+        		return [ ViewManager.resultView(), new MatchDelegate() ];
+        	}
     	} else {
         	return [ ViewManager.padelScoreboardView(), new PadelScoreboardDelegate() ];
         }
