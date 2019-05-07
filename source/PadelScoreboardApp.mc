@@ -15,12 +15,13 @@ class PadelScoreboardApp extends Application.AppBase {
 
     // onStart() is called on application start up
     function onStart(state) {
+    	TimeManager.init();
     }
 
     // onStop() is called when your application is exiting
     function onStop(state) {
     	if ($.match != null) {
-	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
+	    	//Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
     	}
     	
     	if ($.times != null) {

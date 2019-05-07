@@ -92,6 +92,34 @@ module ViewManager {
 		
 		return $.tiebreakConfigMenu;
 	}
+	
+	function freeInitialMenu() {
+		$.initialMenu = null;
+	}
+	
+	function freePauseMenu() {
+		$.pauseMenu = null;
+	}
+	
+	function freeGamesConfigMenu() {
+		$.gamesConfigMenu = null;
+	}
+	
+	function freeGoldenPointConfigMenu() {
+		$.goldenPointConfigMenu = null;
+	}
+	
+	function freeServerConfigMenu() {
+		$.serverConfigMenu = null;
+	}
+	
+	function freeSetsConfigMenu() {
+		$.setsConfigMenu = null;
+	}
+	
+	function freeTiebreakConfigMenu() {
+		$.tiebreakConfigMenu = null;
+	}
 
 
 }

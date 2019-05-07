@@ -12,7 +12,9 @@ class InitialMenuDelegate extends WatchUi.Menu2InputDelegate {
     function onSelect(item) {
         if (item.getId() == :Initial_StartMatch) {
             MatchManager.startMatch();
-            WatchUi.pushView(ViewManager.matchView(), new MatchDelegate(), WatchUi.SLIDE_IMMEDIATE);
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+            ViewManager.freeInitialMenu();
+            WatchUi.switchToView(ViewManager.matchView(), new MatchDelegate(), WatchUi.SLIDE_IMMEDIATE);
             return true;
         } else if (item.getId() == :Initial_ServerConfig) {
             WatchUi.pushView(ViewManager.serverConfigMenu(), new ServerConfigMenuDelegate(), WatchUi.SLIDE_RIGHT);

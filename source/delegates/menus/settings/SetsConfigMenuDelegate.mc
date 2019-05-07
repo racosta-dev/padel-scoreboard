@@ -11,12 +11,15 @@ class SetsConfigMenuDelegate extends WatchUi.Menu2InputDelegate {
         if (item.getId() == :SetsConfig_OneSet) {
             MatchManager.setSetsPerMatch(1);
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            ViewManager.freeSetsConfigMenu();
         } else if (item.getId() == :SetsConfig_ThreeSets) {
             MatchManager.setSetsPerMatch(3);
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            ViewManager.freeSetsConfigMenu();
         } else if (item.getId() == :SetsConfig_FiveSets) {
             MatchManager.setSetsPerMatch(5);
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            ViewManager.freeSetsConfigMenu();
         }
     }
 

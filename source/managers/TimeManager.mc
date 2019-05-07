@@ -1,5 +1,8 @@
 using Toybox.System;
 using Toybox.Lang;
+using Toybox.Application.Storage;
+
+using AppConstants.Properties;
 
 var lastPointLength = 0;
 var lastGameLength = 0;
@@ -10,6 +13,10 @@ var times = new MatchTimes();
 
 module TimeManager {
 
+	function init() {
+		$.lastMatchLength = Storage.getValue(Properties.LAST_MATCH_LENGTH);
+	}
+
 	function initializeTimes() {
 		var currentTime = currentTimeSecs();
 		
@@ -18,6 +25,11 @@ module TimeManager {
 		$.times.gameStartTime = currentTime;
 		$.times.setStartTime = currentTime;
 		$.times.matchStartTime = currentTime;
+
+		$.lastPointLength = 0;
+		$.lastGameLength = 0;
+		$.lastSetLength = 0;
+		$.lastMatchLength = 0;
 	}
 
 	function updateTimes() {
@@ -39,6 +51,7 @@ module TimeManager {
 		if ($.matchHasWinner) {
 			$.lastMatchLength = currentTime - $.times.matchStartTime;
 			$.times.matchStartTime = currentTime;
+			Storage.setValue(Properties.LAST_MATCH_LENGTH, $.lastMatchLength);
 		}
 	}
 

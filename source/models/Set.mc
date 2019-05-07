@@ -14,12 +14,12 @@ class Set {
 	
 	var setsPlayed;
 
-	function initialize(config, setsPlayed) {
+	function initialize(config, startingServer, sets) {
 		setConfig = config;
-		setsPlayed = setsPlayed;
+		setsPlayed = sets;
 		homeScore = 0;
 		awayScore = 0;
-		server = config.startingServer;
+		server = startingServer;
 		if (isTiebreak(setConfig, homeScore, awayScore)) {
 			game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
 		} else {
@@ -33,6 +33,7 @@ class Set {
 			"setsPlayed" => setsPlayed,
 			"homeScore" => homeScore,
 			"awayScore" => awayScore,
+			"server" => server,
 			"game" => game.toDictionary()
 			};
 	}
@@ -45,6 +46,7 @@ class Set {
 		setsPlayed = dictionary.get("setsPlayed");
 		homeScore = dictionary.get("homeScore");
 		awayScore = dictionary.get("awayScore");
+		server = dictionary.get("server");
 	
 		if (isTiebreak(setConfig, homeScore, awayScore)) {
 			game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
@@ -64,10 +66,9 @@ class Set {
 			
 			increaseTeamScore(team);
 			
-			if ((getTeamScore(team) == setConfig.gamesPerSet && getTeamScore(team) - getRivalScore(team) > 1)
-					|| (getTeamScore(team) == setConfig.gamesPerSet + 1)) {
+			if (teamWonSet(team)) {
 				$.setHasWinner = true;
-			} else if (getTeamScore(team) == setConfig.gamesPerSet && getRivalScore(team) == setConfig.gamesPerSet) {
+			} else if (isTiebreak(setConfig, getTeamScore(team), getRivalScore(team))) {
 				game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
 			} else {
 				game = new Game(MatchConstants.POINTS_PER_GAME);
@@ -109,12 +110,21 @@ class Set {
 		}
 	}
 	
-	hidden function isTiebreak(setConfig, homeScore, awayScore) {
-		return (setConfig.gamesPerSet == 1)
-			|| (homeScore == setConfig.gamesPerSet
-				&& awayScore == setConfig.gamesPerSet
-				&& (setConfig.tiebreak == MatchConstants.TIEBREAK_YES
-					|| setConfig.tiebreak == MatchConstants.TIEBREAK_EXCEPT_IN_LAST_SET
-					&& setsPlayed < setConfig.setsPerMatch - 1));
+	hidden function teamWonSet(team) {
+		return (getTeamScore(team) >= setConfig.gamesPerSet
+				&& getTeamScore(team) - getRivalScore(team) > 1)
+					|| (getTeamScore(team) == setConfig.gamesPerSet + 1
+						&& isTiebreak(setConfig, getTeamScore(team), getRivalScore(team)))
+					|| (getTeamScore(team) >= setConfig.gamesPerSet
+						&& setConfig.gamesPerSet == 1);
+	}
+	
+	hidden function isTiebreak(config, teamScore, rivalScore) {
+		return (config.gamesPerSet == 1)
+			|| (teamScore == config.gamesPerSet
+				&& rivalScore == config.gamesPerSet
+				&& (config.tiebreak == MatchConstants.TIEBREAK_YES
+					|| config.tiebreak == MatchConstants.TIEBREAK_EXCEPT_IN_LAST_SET
+					&& setsPlayed < config.setsPerMatch - 1));
 	}
 }

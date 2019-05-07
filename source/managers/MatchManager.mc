@@ -10,7 +10,7 @@ using AppConstants.Properties;
 using MatchConstants;
 
 var match = null;
-var pointDetails = [];
+//var pointDetails = [];
 
 var matchHasWinner = false;
 var setHasWinner = false;
@@ -33,7 +33,7 @@ module MatchManager {
 				currentMatch.fromDictionary(dictionary);
 				$.match = currentMatch;
 				
-				$.pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
+				//$.pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
 				
 				dictionary = Storage.getValue(Properties.TIMES);
 				
@@ -73,7 +73,7 @@ module MatchManager {
     	
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
     	
-		savePointDetails();
+		//savePointDetails();
 	}
 	
 	function undoLastPoint() {
@@ -90,14 +90,14 @@ module MatchManager {
 	}
 	
 	function startMatch() {
-		if ($.match != null) {
-	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
-    	}
-    	
+		//savePointDetails();
+    	Storage.deleteValue(Properties.LAST_POINT);
+    	Storage.deleteValue(Properties.LAST_MATCH_LENGTH);
+    	Storage.deleteValue(Properties.TIMES);
 		$.match = new Match(matchConfig);
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
-    	initPointDetails();
-		savePointDetails();
+    	//initPointDetails();
+		//savePointDetails();
 		TimeManager.initializeTimes();
 	}
 	
@@ -124,7 +124,7 @@ module MatchManager {
 	function deletePointsData() {
 		Storage.clearValues();
 		$.match = null;
-		$.pointDetails = [];
+		//$.pointDetails = [];
 	}
 	
 	function initPointDetails() {
@@ -139,27 +139,29 @@ module MatchManager {
 	}
 	
 	function savePointDetails() {
-		if ($.pointDetails == null) {
-			$.pointDetails = [];
+		if ($.match != null) {
+			var pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
+			
+			if (pointDetails == null) {
+				pointDetails = [];
+			}
+			
+			var dictionary = {
+	    		"\"length\"" => $.lastPointLength,
+	    		"\"sets\"" => translateSets(),
+	    		"\"game\"" => {
+	    			"\"home\"" => "\"" + $.match.set.game.translateHomeScore() + "\"",
+	    			"\"away\"" => "\"" + $.match.set.game.translateAwayScore() + "\""
+	    		}
+	    	};
+			
+			pointDetails.add(dictionary);
+			
+			Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, pointDetails);
 		}
-		
-		var dictionary = {
-    		"\"length\"" => $.lastPointLength,
-    		"\"sets\"" => translateSets(),
-    		"\"game\"" => {
-    			"\"home\"" => "\"" + $.match.set.game.translateHomeScore() + "\"",
-    			"\"away\"" => "\"" + $.match.set.game.translateAwayScore() + "\""
-    		}
-    	};
-		
-		$.pointDetails.add(dictionary);
 	}
 	
 	function sendPointDetails() {
-		if ($.match != null) {
-	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
-    	}
-		
 		var fullDetails = {};
 		var detailIds = Storage.getValue(Properties.POINT_DETAILS);
 		

@@ -30,7 +30,7 @@ class Match {
 		awayScore = 0;
 		setsPlayed = 0;
 		setsToWin = Math.floor(matchConfig.setsPerMatch / 2) + 1;
-		set = new Set(config, setsPlayed);
+		set = new Set(config, config.startingServer, setsPlayed);
 	}
 	
 	function toDictionary() {
@@ -66,7 +66,7 @@ class Match {
 	
 		winner = dictionary.get("winner");
 		
-		set = new Set(matchConfig, setsPlayed);
+		set = new Set(matchConfig, matchConfig.startingServer, setsPlayed);
 		set.fromDictionary(dictionary.get("set"));
 	}
 	
@@ -75,7 +75,7 @@ class Match {
 		
 		set.score(team);
 		
-		matchConfig.startingServer = set.server;
+		var server = set.server;
 		
 		homeScores[setsPlayed] = set.homeScore;
 		awayScores[setsPlayed] = set.awayScore;
@@ -83,7 +83,7 @@ class Match {
 		if ($.setHasWinner) {
 			increaseTeamScore(team);
 			setsPlayed++;
-			set = new Set(matchConfig, setsPlayed);
+			set = new Set(matchConfig, server, setsPlayed);
 		}
 		
 		if (getTeamScore(team) >= setsToWin) {

@@ -11,9 +11,11 @@ class ServerConfigMenuDelegate extends WatchUi.Menu2InputDelegate {
         if (item.getId() == :ServerConfig_Home) {
             MatchManager.setStartingServer(MatchConstants.HOME_TEAM);
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            ViewManager.freeServerConfigMenu();
         } else if (item.getId() == :ServerConfig_Away) {
             MatchManager.setStartingServer(MatchConstants.AWAY_TEAM);
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            ViewManager.freeServerConfigMenu();
         }
     }
 
