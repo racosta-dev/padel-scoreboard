@@ -52,13 +52,11 @@ module MatchManager {
     	
     	Storage.setValue(Properties.LAST_POINT, $.match.toDictionary());
     	
-    	var matchHasWinner = $.match.score(team);
+    	$.match.score(team);
     	
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
     	
 		savePointDetails();
-    	
-    	return matchHasWinner;
 	}
 	
 	function undoLastPoint() {
@@ -104,6 +102,8 @@ module MatchManager {
 	}
 	
 	function savePointDetails() {
+		$.pointDetails = Storage.getValue(Properties.POINT_DETAILS);
+		
 		if ($.pointDetails == null) {
 			$.pointDetails = [];
 		}

@@ -3,6 +3,7 @@ using Toybox.WatchUi;
 using Toybox.System;
 
 using AppConstants.Properties;
+using ViewManager;
 
 var device = System.getDeviceSettings();
 
@@ -24,9 +25,9 @@ class PadelScoreboardApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() {
     	if (MatchManager.matchAlreadyRunning()) {
-        	return [ new MatchView(), new MatchDelegate() ];
+        	return [ ViewManager.matchView(), new MatchDelegate() ];
     	} else {
-        	return [ new PadelScoreboardView(), new PadelScoreboardDelegate() ];
+        	return [ ViewManager.padelScoreboardView(), new PadelScoreboardDelegate() ];
         }
     }
 

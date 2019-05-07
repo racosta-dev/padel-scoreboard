@@ -1,5 +1,7 @@
 using Toybox.WatchUi;
 
+using ViewManager;
+
 class ResultDelegate extends WatchUi.BehaviorDelegate {
 
     function initialize() {
@@ -7,13 +9,13 @@ class ResultDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() {
-        WatchUi.pushView(new Rez.Menus.PauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.pushView(ViewManager.pauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
         return true;
     }
 
     function onKey(keyEvent) {
         if (keyEvent.getKey() == 4) {
-        	WatchUi.pushView(new Rez.Menus.PauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
+        	WatchUi.pushView(ViewManager.pauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
         }
         return true;
     }

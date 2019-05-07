@@ -1,4 +1,5 @@
 using Toybox.WatchUi;
+using ViewManager;
 
 class MatchDelegate extends WatchUi.BehaviorDelegate {
 
@@ -7,13 +8,13 @@ class MatchDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() {
-        WatchUi.pushView(new Rez.Menus.PauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.pushView(ViewManager.pauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
         return true;
     }
 
     function onKey(keyEvent) {
         if (keyEvent.getKey() == 4) {
-        	WatchUi.pushView(new Rez.Menus.PauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
+        	WatchUi.pushView(ViewManager.pauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
         }
         return true;
     }
@@ -27,12 +28,12 @@ class MatchDelegate extends WatchUi.BehaviorDelegate {
     	
 		var center = $.device.screenHeight / 2;
 		if (event.getCoordinates()[0] < center) {
-			matchHasWinner = MatchManager.scoreHome();
+			MatchManager.scoreHome();
 		} else {
-			matchHasWinner = MatchManager.scoreAway();
+			MatchManager.scoreAway();
 		}
 		
-		if (matchHasWinner) {
+		if ($.match.winner != null) {
 			WatchUi.pushView(new ResultView(), new ResultDelegate(), WatchUi.SLIDE_UP);
 		}
 		

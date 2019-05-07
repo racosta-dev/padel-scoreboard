@@ -1,6 +1,6 @@
 using Toybox.System as Sys;
 using Toybox.Lang as Lang;
-using Toybox.WatchUi as Ui;
+using Toybox.WatchUi;
 
 module TranslateUtils {
 
@@ -8,9 +8,9 @@ module TranslateUtils {
 		var text = "";
 	
 		if (teamId == MatchConstants.HOME_TEAM) {
-			text = Ui.loadResource(Rez.Strings.ServerConfig_Home);
+			text = WatchUi.loadResource(Rez.Strings.ServerConfig_Home);
 		} else if (teamId == MatchConstants.AWAY_TEAM) {
-			text = Ui.loadResource(Rez.Strings.ServerConfig_Away);
+			text = WatchUi.loadResource(Rez.Strings.ServerConfig_Away);
 		}
 		
 		return text;
@@ -20,12 +20,12 @@ module TranslateUtils {
 		var text = "";
 	
 		if (tiebreakId == MatchConstants.TIEBREAK_YES) {
-			text = Ui.loadResource(Rez.Strings.TiebreakConfig_Yes);
+			text = WatchUi.loadResource(Rez.Strings.TiebreakConfig_Yes);
 		} else if (tiebreakId == MatchConstants.TIEBREAK_NO) {
-			text = Ui.loadResource(Rez.Strings.TiebreakConfig_No);
+			text = WatchUi.loadResource(Rez.Strings.TiebreakConfig_No);
 		} else if (tiebreakId == MatchConstants.TIEBREAK_EXCEPT_IN_LAST_SET) {
-			text = Ui.loadResource(Rez.Strings.TiebreakConfig_Yes) + ". " +
-				   Ui.loadResource(Rez.Strings.TiebreakConfig_ExceptInLastSet);
+			text = WatchUi.loadResource(Rez.Strings.TiebreakConfig_Yes) + ". " +
+				   WatchUi.loadResource(Rez.Strings.TiebreakConfig_ExceptInLastSet);
 		}
 		
 		return text;
@@ -35,9 +35,9 @@ module TranslateUtils {
 		var text = "";
 	
 		if (goldenPointId) {
-			text = Ui.loadResource(Rez.Strings.GoldenPointConfig_Yes);
+			text = WatchUi.loadResource(Rez.Strings.GoldenPointConfig_Yes);
 		} else {
-			text = Ui.loadResource(Rez.Strings.GoldenPointConfig_No);
+			text = WatchUi.loadResource(Rez.Strings.GoldenPointConfig_No);
 		}
 		
 		return text;
@@ -47,7 +47,7 @@ module TranslateUtils {
 		var text = "";
 	
 		if (gamesId == 1) {
-			text = Ui.loadResource(Rez.Strings.GamesConfig_Tiebreak);
+			text = WatchUi.loadResource(Rez.Strings.GamesConfig_Tiebreak);
 		} else {
 			text = gamesId + "";
 		}

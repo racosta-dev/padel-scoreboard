@@ -1,6 +1,8 @@
 using Toybox.WatchUi;
 using TranslateUtils;
 
+using ViewManager;
+
 class ResultView extends WatchUi.View {
 
     function initialize() {
@@ -16,6 +18,9 @@ class ResultView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
+    	if ($.match.winner == null) {
+    		WatchUi.pushView(ViewManager.matchView(), new MatchDelegate(), WatchUi.SLIDE_IMMEDIATE);
+    	}
     	reloadDrawables();
     }
 
