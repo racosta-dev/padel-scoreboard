@@ -97,7 +97,7 @@ module MatchManager {
     	Storage.deleteValue(Properties.TIMES);
 		$.match = new Match(matchConfig);
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
-    	//initPointDetails();
+    	initPointDetails();
 		//savePointDetails();
 		TimeManager.initializeTimes();
 	}
