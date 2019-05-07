@@ -34,7 +34,7 @@ class MatchDelegate extends WatchUi.BehaviorDelegate {
 			MatchManager.scoreAway();
 		}
 		
-		if ($.match.winner != null) {
+		if ($.match != null && $.match.winner != null) {
 			WatchUi.pushView(ViewManager.resultView(), new ResultDelegate(), WatchUi.SLIDE_UP);
 		}
 		

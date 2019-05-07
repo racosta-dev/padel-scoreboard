@@ -3,7 +3,10 @@ using TimeManager;
 
 class MatchView extends WatchUi.View {
 
+	hidden var timer;
+
     function initialize() {
+    	timer = new Timer.Timer();
         View.initialize();
     }
 
@@ -17,6 +20,7 @@ class MatchView extends WatchUi.View {
     // loading resources into memory.
     function onShow() {
     	//reloadDrawables();
+    	timer.start(method(:onTimer), 1000, true);
     }
 
     // Update the view
@@ -27,7 +31,7 @@ class MatchView extends WatchUi.View {
         
         // Server information
         dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_BLACK);
-    	if ($.match.set.server == MatchConstants.HOME_TEAM) {
+    	if ($.match != null && $.match.set.server == MatchConstants.HOME_TEAM) {
 			dc.fillCircle(dc.getWidth() / 2 - 55, dc.getHeight() / 2 - 35, 7);
 		} else {
 			dc.fillCircle(dc.getWidth() / 2 + 55, dc.getHeight() / 2 - 35, 7);
@@ -38,38 +42,49 @@ class MatchView extends WatchUi.View {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() {
+    	timer.stop();
     }
     
+    function onTimer() {
+		WatchUi.requestUpdate();
+	}
+    
     function reloadDrawables(dc) {
-    	// Result information
-    	var drawable = findDrawableById("Match_HomePoints");
-        if (drawable != null) {
-   			drawable.setText($.match.set.game.translateHomeScore() + "");
-        }
+	    var drawable;
+    
+    	if ($.match != null) {
+    	
+    		// Result information
+	    	drawable = findDrawableById("Match_HomePoints");
+	        if (drawable != null) {
+	   			drawable.setText($.match.set.game.translateHomeScore() + "");
+	        }
+	        
+	    	drawable = findDrawableById("Match_AwayPoints");
+	        if (drawable != null) {
+	   			drawable.setText($.match.set.game.translateAwayScore() + "");
+	        }
+	        
+	    	drawable = findDrawableById("Match_HomeGames");
+	        if (drawable != null) {
+	   			drawable.setText(match.set.homeScore + "");
+	        }
+	        
+	    	drawable = findDrawableById("Match_AwayGames");
+	        if (drawable != null) {
+	   			drawable.setText(match.set.awayScore + "");
+	        }
+	        
+	    	drawable = findDrawableById("Match_HomeSets");
+	        if (drawable != null) {
+	   			drawable.setText(match.homeScore + "");
+	        }
+	        
+	    	drawable = findDrawableById("Match_AwaySets");
+	        if (drawable != null) {
+	   			drawable.setText(match.awayScore + "");
+	        }
         
-    	drawable = findDrawableById("Match_AwayPoints");
-        if (drawable != null) {
-   			drawable.setText($.match.set.game.translateAwayScore() + "");
-        }
-        
-    	drawable = findDrawableById("Match_HomeGames");
-        if (drawable != null) {
-   			drawable.setText(match.set.homeScore + "");
-        }
-        
-    	drawable = findDrawableById("Match_AwayGames");
-        if (drawable != null) {
-   			drawable.setText(match.set.awayScore + "");
-        }
-        
-    	drawable = findDrawableById("Match_HomeSets");
-        if (drawable != null) {
-   			drawable.setText(match.homeScore + "");
-        }
-        
-    	drawable = findDrawableById("Match_AwaySets");
-        if (drawable != null) {
-   			drawable.setText(match.awayScore + "");
         }
         
         // Time information

@@ -1,8 +1,7 @@
 class Tiebreak extends Game {
 
-	function initialize(config) {
-		Game.initialize(config);
-		pointsPerGame = MatchConstants.POINTS_PER_TIEBREAK;
+	function initialize(points) {
+		Game.initialize(points);
 	}
 	
 	function translateHomeScore() {

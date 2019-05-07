@@ -18,7 +18,7 @@ class ResultView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
-    	if ($.match.winner == null) {
+    	if ($.match != null && $.match.winner == null) {
     		WatchUi.pushView(ViewManager.matchView(), new MatchDelegate(), WatchUi.SLIDE_IMMEDIATE);
     	}
     	reloadDrawables();
@@ -38,9 +38,12 @@ class ResultView extends WatchUi.View {
     }
     
     function reloadDrawables() {
-    	var drawable = findDrawableById("Result_Winner");
-        if (drawable != null) {
-   			drawable.setText(TranslateUtils.translateTeam($.match.winner));
+    
+    	if ($.match != null) {
+	    	var drawable = findDrawableById("Result_Winner");
+	        if (drawable != null) {
+	   			drawable.setText(TranslateUtils.translateTeam($.match.winner));
+	        }
         }
     }
     

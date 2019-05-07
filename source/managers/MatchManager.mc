@@ -3,11 +3,18 @@ using Toybox.Attention;
 using Toybox.Application;
 using Toybox.Application.Storage;
 
+using TimeManager;
+using CommManager;
+
 using AppConstants.Properties;
 using MatchConstants;
 
 var match = null;
 var pointDetails = [];
+
+var matchHasWinner = false;
+var setHasWinner = false;
+var gameHasWinner = false;
 
 module MatchManager {
 
@@ -25,9 +32,17 @@ module MatchManager {
 				var currentMatch = new Match(matchConfig);
 				currentMatch.fromDictionary(dictionary);
 				$.match = currentMatch;
+				
+				$.pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
+				
+				dictionary = Storage.getValue(Properties.TIMES);
+				
+				if (dictionary != null) {
+					var currentTimes = new MatchTimes();
+					currentTimes.fromDictionary(dictionary);
+					$.times = currentTimes;
+				}
 			}
-			
-			$.pointDetails = Storage.getValue(Properties.POINT_DETAILS);
 			
 			if ($.match != null) {
 				return true;
@@ -54,6 +69,8 @@ module MatchManager {
     	
     	$.match.score(team);
     	
+    	TimeManager.updateTimes();
+    	
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
     	
 		savePointDetails();
@@ -67,13 +84,21 @@ module MatchManager {
 			lastPointMatch.fromDictionary(dictionary);
 			
 			$.match = lastPointMatch;
+			
+			Storage.setValue(Properties.CURRENT_MATCH, dictionary);
 		}
 	}
 	
 	function startMatch() {
+		if ($.match != null) {
+	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
+    	}
+    	
 		$.match = new Match(matchConfig);
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
+    	initPointDetails();
 		savePointDetails();
+		TimeManager.initializeTimes();
 	}
 	
 	function setStartingServer(server) {
@@ -97,19 +122,29 @@ module MatchManager {
 	}
 	
 	function deletePointsData() {
-		Storage.deleteValue(Properties.POINT_DETAILS);
+		Storage.clearValues();
+		$.match = null;
 		$.pointDetails = [];
 	}
 	
-	function savePointDetails() {
-		$.pointDetails = Storage.getValue(Properties.POINT_DETAILS);
+	function initPointDetails() {
+		var details = Storage.getValue(Properties.POINT_DETAILS);
 		
+    	if (details == null) {
+    		details = [];
+    	}
+    	
+    	details.add($.match.id);
+    	Storage.setValue(Properties.POINT_DETAILS, details);
+	}
+	
+	function savePointDetails() {
 		if ($.pointDetails == null) {
 			$.pointDetails = [];
 		}
 		
 		var dictionary = {
-    		"\"length\"" => 0,
+    		"\"length\"" => $.lastPointLength,
     		"\"sets\"" => translateSets(),
     		"\"game\"" => {
     			"\"home\"" => "\"" + $.match.set.game.translateHomeScore() + "\"",
@@ -118,6 +153,23 @@ module MatchManager {
     	};
 		
 		$.pointDetails.add(dictionary);
+	}
+	
+	function sendPointDetails() {
+		if ($.match != null) {
+	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
+    	}
+		
+		var fullDetails = {};
+		var detailIds = Storage.getValue(Properties.POINT_DETAILS);
+		
+		if (detailIds != null && detailIds.size() > 0) {
+			for (var i = 0; i < detailIds.size(); i++) {
+				fullDetails.put(detailIds[i], Storage.getValue(Properties.POINT_DETAILS + "_" + detailIds[i]));
+			}
+		}
+		
+        CommManager.send(fullDetails);
 	}
 	
 	hidden function translateSets() {

@@ -1,4 +1,5 @@
 using Toybox.System;
+using MatchConstants;
 
 class Set {
 
@@ -10,18 +11,26 @@ class Set {
 	var server;
 	
 	var game;
+	
+	var setsPlayed;
 
-	function initialize(config) {
+	function initialize(config, setsPlayed) {
 		setConfig = config;
+		setsPlayed = setsPlayed;
 		homeScore = 0;
 		awayScore = 0;
 		server = config.startingServer;
-		game = new Game(config);
+		if (isTiebreak(setConfig, homeScore, awayScore)) {
+			game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
+		} else {
+			game = new Game(MatchConstants.POINTS_PER_GAME);
+		}
 	}
 	
 	function toDictionary() {
 		return {
 			"setConfig" => setConfig.toDictionary(),
+			"setsPlayed" => setsPlayed,
 			"homeScore" => homeScore,
 			"awayScore" => awayScore,
 			"game" => game.toDictionary()
@@ -33,35 +42,39 @@ class Set {
 		setConfig = new MatchConfiguration();
 		setConfig.fromDictionary(dictionary.get("setConfig"));
 		
+		setsPlayed = dictionary.get("setsPlayed");
 		homeScore = dictionary.get("homeScore");
 		awayScore = dictionary.get("awayScore");
 	
-		game = new Game(setConfig);
+		if (isTiebreak(setConfig, homeScore, awayScore)) {
+			game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
+		} else {
+			game = new Game(MatchConstants.POINTS_PER_GAME);
+		}
 		game.fromDictionary(dictionary.get("game"));
 	}
 	
 	function score(team) {
-		var setHasWinner = false;
-		var gameHasWinner = game.score(team);
+		$.setHasWinner = false;
 		
-		if (gameHasWinner) {
+		game.score(team);
+		
+		if ($.gameHasWinner) {
 			toggleServer();
 			
 			increaseTeamScore(team);
 			
 			if ((getTeamScore(team) == setConfig.gamesPerSet && getTeamScore(team) - getRivalScore(team) > 1)
 					|| (getTeamScore(team) == setConfig.gamesPerSet + 1)) {
-				setHasWinner = true;
+				$.setHasWinner = true;
 			} else if (getTeamScore(team) == setConfig.gamesPerSet && getRivalScore(team) == setConfig.gamesPerSet) {
-				game = new Tiebreak(setConfig);
+				game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
 			} else {
-				game = new Game(setConfig);
+				game = new Game(MatchConstants.POINTS_PER_GAME);
 			}
 		} else if (game.needServerChange()) {
 			toggleServer();
 		}
-		
-		return setHasWinner;
 	}
 	
 	hidden function toggleServer() {
@@ -94,5 +107,14 @@ class Set {
 		} else {
 			return homeScore;
 		}
+	}
+	
+	hidden function isTiebreak(setConfig, homeScore, awayScore) {
+		return (setConfig.gamesPerSet == 1)
+			|| (homeScore == setConfig.gamesPerSet
+				&& awayScore == setConfig.gamesPerSet
+				&& (setConfig.tiebreak == MatchConstants.TIEBREAK_YES
+					|| setConfig.tiebreak == MatchConstants.TIEBREAK_EXCEPT_IN_LAST_SET
+					&& setsPlayed < setConfig.setsPerMatch - 1));
 	}
 }

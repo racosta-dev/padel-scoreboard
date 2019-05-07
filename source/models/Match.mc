@@ -1,6 +1,9 @@
 using Toybox.System;
+using Toybox.Time;
 
 class Match {
+
+	var id;
 
 	var matchConfig;
 	
@@ -18,6 +21,7 @@ class Match {
 	var set;
 
 	function initialize(config) {
+		id = Time.now().value();
 		matchConfig = config;
 		winner = null;
 		homeScores = new [matchConfig.setsPerMatch];
@@ -26,11 +30,12 @@ class Match {
 		awayScore = 0;
 		setsPlayed = 0;
 		setsToWin = Math.floor(matchConfig.setsPerMatch / 2) + 1;
-		set = new Set(config);
+		set = new Set(config, setsPlayed);
 	}
 	
 	function toDictionary() {
 		return {
+			"id" => id,
 			"matchConfig" => matchConfig.toDictionary(),
 			"setsToWin" => setsToWin,
 			"homeScores" => homeScores,
@@ -48,6 +53,8 @@ class Match {
 		matchConfig = new MatchConfiguration();
 		matchConfig.fromDictionary(dictionary.get("matchConfig"));
 		
+		id = dictionary.get("id");
+		
 		setsToWin = dictionary.get("setsToWin");
 	
 		homeScores = dictionary.get("homeScores");
@@ -59,33 +66,30 @@ class Match {
 	
 		winner = dictionary.get("winner");
 		
-		set = new Set(matchConfig);
+		set = new Set(matchConfig, setsPlayed);
 		set.fromDictionary(dictionary.get("set"));
 	}
 	
 	function score(team) {
-		var matchHasWinner = false;
-		var setHasWinner = set.score(team);
+		$.matchHasWinner = false;
+		
+		set.score(team);
 		
 		matchConfig.startingServer = set.server;
 		
 		homeScores[setsPlayed] = set.homeScore;
 		awayScores[setsPlayed] = set.awayScore;
 		
-		if (setHasWinner) {
+		if ($.setHasWinner) {
 			increaseTeamScore(team);
-			
-			set = new Set(matchConfig);
-			
 			setsPlayed++;
+			set = new Set(matchConfig, setsPlayed);
 		}
 		
 		if (getTeamScore(team) >= setsToWin) {
 			winner = team;
-			matchHasWinner = true;
+			$.matchHasWinner = true;
 		}
-	
-		return matchHasWinner;
 	}
 	
 	hidden function increaseTeamScore(team) {

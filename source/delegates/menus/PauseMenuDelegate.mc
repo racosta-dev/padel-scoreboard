@@ -22,6 +22,11 @@ class PauseMenuDelegate extends WatchUi.Menu2InputDelegate {
             MatchManager.deletePointsData();
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
             WatchUi.pushView(ViewManager.initialMenu(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
+        } else if (item.getId() == :Pause_SendPointsData) {
+        	System.println("SENDPOINTSDATA");
+            MatchManager.sendPointDetails();
+            //WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            //WatchUi.pushView(ViewManager.initialMenu(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
         } else if (item.getId() == :Pause_Exit) {
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
             System.exit();

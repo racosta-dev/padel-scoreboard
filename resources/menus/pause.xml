@@ -6,6 +6,8 @@
 		label="@Strings.Pause_NewMatch" />
 	<menu-item id="Pause_DeletePointsData"
 		label="@Strings.Pause_DeletePointsData" />
+	<menu-item id="Pause_SendPointsData"
+		label="@Strings.Pause_SendPointsData" />
 
 	<menu-item id="Pause_Exit" label="@Strings.Pause_Exit" />
 </menu2>

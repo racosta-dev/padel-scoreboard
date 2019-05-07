@@ -19,7 +19,7 @@ class PadelScoreboardDelegate extends WatchUi.BehaviorDelegate {
     
     function onKey(keyEvent) {
         if (keyEvent.getKey() == 4) {
-        	WatchUi.pushView(ViewManager.initialMenu(), new InitialMenuDelegate(), WatchUi.SLIDE_UP);
+        	WatchUi.pushView(ViewManager.pauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
         }
         return true;
     }

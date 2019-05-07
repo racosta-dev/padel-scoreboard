@@ -2,16 +2,13 @@ using MatchConstants;
 
 class Game {
 
-	var gameConfig;
-	
 	var pointsPerGame;
 	
 	var homeScore;
 	var awayScore;
-
-	function initialize(config) {
-		gameConfig = config;
-		pointsPerGame = MatchConstants.POINTS_PER_GAME;
+	
+	function initialize(points) {
+		pointsPerGame = points;
 		homeScore = 0;
 		awayScore = 0;
 	}
@@ -46,31 +43,25 @@ class Game {
 	
 	function toDictionary() {
 		return {
-			"gameConfig" => gameConfig.toDictionary(),
 			"homeScore" => homeScore,
 			"awayScore" => awayScore
 			};
 	}
 	
 	function fromDictionary(dictionary) {
-		gameConfig = new MatchConfiguration();
-		gameConfig.fromDictionary(dictionary.get("gameConfig"));
-		
 		homeScore = dictionary.get("homeScore");
 		awayScore = dictionary.get("awayScore");
 	}
 	
 	function score(team) {
-		var gameHasWinner = false;
+		$.gameHasWinner = false;
 		
 		increaseTeamScore(team);
 		
-		if (getTeamScore(team) >= MatchConstants.POINTS_PER_GAME
+		if (getTeamScore(team) >= pointsPerGame
 				&& getTeamScore(team) - getRivalScore(team) > 1) {
-			gameHasWinner = true;
+			$.gameHasWinner = true;
 		}
-		
-		return gameHasWinner;
 	}
 	
 	hidden function increaseTeamScore(team) {
