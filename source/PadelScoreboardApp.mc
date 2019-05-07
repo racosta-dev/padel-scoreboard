@@ -21,7 +21,7 @@ class PadelScoreboardApp extends Application.AppBase {
     // onStop() is called when your application is exiting
     function onStop(state) {
     	if ($.match != null) {
-	    	//Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
+	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
     	}
     	
     	if ($.times != null) {

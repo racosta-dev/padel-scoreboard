@@ -10,7 +10,7 @@ using AppConstants.Properties;
 using MatchConstants;
 
 var match = null;
-//var pointDetails = [];
+var pointDetails = {};
 
 var matchHasWinner = false;
 var setHasWinner = false;
@@ -33,7 +33,7 @@ module MatchManager {
 				currentMatch.fromDictionary(dictionary);
 				$.match = currentMatch;
 				
-				//$.pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
+				$.pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
 				
 				dictionary = Storage.getValue(Properties.TIMES);
 				
@@ -125,7 +125,7 @@ module MatchManager {
 	function deletePointsData() {
 		Storage.clearValues();
 		$.match = null;
-		//$.pointDetails = [];
+		$.pointDetails = {};
 	}
 	
 	function initPointDetails() {
@@ -164,26 +164,26 @@ module MatchManager {
 	
 	function savePointDetails(team) {
 		if ($.match != null) {
-			var pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
+			//var pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
 			
-			if (pointDetails == null) {
-				pointDetails = {
+			if ($.pointDetails == null) {
+				$.pointDetails = {
 					"match" => $.match.id,
 					"config" => FormatUtils.formatConfigDetails($.match.matchConfig),
 					"points" => "" + team,
 					"times" => "" + $.lastPointLength
 				};
 			} else {
-				var pointsString = pointDetails.get("points");
+				var pointsString = $.pointDetails.get("points");
 				pointsString += team;
-				pointDetails.put("points", pointsString);
+				$.pointDetails.put("points", pointsString);
 				
-				var timesString = pointDetails.get("times");
+				var timesString = $.pointDetails.get("times");
 				timesString += "|" + $.lastPointLength;
-				pointDetails.put("times", timesString);
+				$.pointDetails.put("times", timesString);
 			}
 			
-			Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, pointDetails);
+			//Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, pointDetails);
 		}
 	}
 	
