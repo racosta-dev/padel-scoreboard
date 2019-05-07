@@ -10,7 +10,7 @@ using AppConstants.Properties;
 using MatchConstants;
 
 var match = null;
-var pointDetails = {};
+var pointDetails = null;
 
 var matchHasWinner = false;
 var setHasWinner = false;
@@ -73,7 +73,6 @@ module MatchManager {
     	
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
     	
-		//savePointDetails();
 		savePointDetails(team);
 	}
 	
@@ -91,14 +90,12 @@ module MatchManager {
 	}
 	
 	function startMatch() {
-		//savePointDetails();
     	Storage.deleteValue(Properties.LAST_POINT);
     	Storage.deleteValue(Properties.LAST_MATCH_LENGTH);
     	Storage.deleteValue(Properties.TIMES);
 		$.match = new Match(matchConfig);
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
     	initPointDetails();
-		//savePointDetails();
 		TimeManager.initializeTimes();
 	}
 	
@@ -125,7 +122,7 @@ module MatchManager {
 	function deletePointsData() {
 		Storage.clearValues();
 		$.match = null;
-		$.pointDetails = {};
+		$.pointDetails = null;
 	}
 	
 	function initPointDetails() {
@@ -139,32 +136,8 @@ module MatchManager {
     	Storage.setValue(Properties.POINT_DETAILS, details);
 	}
 	
-	function savePointDetailsOLD() {
-		if ($.match != null) {
-			var pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
-			
-			if (pointDetails == null) {
-				pointDetails = [];
-			}
-			
-			var dictionary = {
-	    		"\"length\"" => $.lastPointLength,
-	    		"\"sets\"" => translateSets(),
-	    		"\"game\"" => {
-	    			"\"home\"" => "\"" + $.match.set.game.translateHomeScore() + "\"",
-	    			"\"away\"" => "\"" + $.match.set.game.translateAwayScore() + "\""
-	    		}
-	    	};
-			
-			pointDetails.add(dictionary);
-			
-			Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, pointDetails);
-		}
-	}
-	
 	function savePointDetails(team) {
 		if ($.match != null) {
-			//var pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
 			
 			if ($.pointDetails == null) {
 				$.pointDetails = {
@@ -183,11 +156,14 @@ module MatchManager {
 				$.pointDetails.put("times", timesString);
 			}
 			
-			//Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, pointDetails);
 		}
 	}
 	
 	function sendPointDetails() {
+		if ($.match != null) {
+	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
+    	}
+    	
 		var fullDetails = {};
 		var detailIds = Storage.getValue(Properties.POINT_DETAILS);
 		
@@ -200,26 +176,4 @@ module MatchManager {
         CommManager.send(fullDetails);
 	}
 	
-	hidden function translateSets() {
-    	var array = [];
-    	var dictionary = null;
-    	
-    	if ($.match.homeScores != null && $.match.homeScores.size() > 0
-    		&& $.match.awayScores != null && $.match.awayScores.size() > 0) {
-	    	for (var i = 0; i < $.match.matchConfig.setsPerMatch; i++) {
-	    		if ($.match.homeScores[i] != null && $.match.awayScores[i] != null
-	    			&& ($.match.homeScores[i] > 0 || $.match.awayScores[i] > 0)) {
-	    			dictionary = {
-	    				"\"home\"" => $.match.homeScores[i],
-	    				"\"away\"" => $.match.awayScores[i]
-	    			};
-	    			
-	    			array.add(dictionary);
-	    		}
-	    	}
-    	}
-    	
-    	return array;
-    }
-
 }
