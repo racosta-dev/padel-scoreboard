@@ -34,7 +34,7 @@ module TranslateUtils {
 	function translateGoldenPoint(goldenPointId) {
 		var text = "";
 	
-		if (goldenPointId) {
+		if (goldenPointId == MatchConstants.GOLDEN_POINT_YES) {
 			text = WatchUi.loadResource(Rez.Strings.GoldenPointConfig_Yes);
 		} else {
 			text = WatchUi.loadResource(Rez.Strings.GoldenPointConfig_No);

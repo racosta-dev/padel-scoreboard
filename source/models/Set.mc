@@ -68,7 +68,7 @@ class Set {
 			
 			if (teamWonSet(team)) {
 				$.setHasWinner = true;
-			} else if (isTiebreak(setConfig, getTeamScore(team), getRivalScore(team))) {
+			} else if (isTiebreakNext(setConfig, getTeamScore(team), getRivalScore(team))) {
 				game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
 			} else {
 				game = new Game(MatchConstants.POINTS_PER_GAME);
@@ -114,12 +114,16 @@ class Set {
 		return (getTeamScore(team) >= setConfig.gamesPerSet
 				&& getTeamScore(team) - getRivalScore(team) > 1)
 					|| (getTeamScore(team) == setConfig.gamesPerSet + 1
-						&& isTiebreak(setConfig, getTeamScore(team), getRivalScore(team)))
+						&& isTiebreak())
 					|| (getTeamScore(team) >= setConfig.gamesPerSet
 						&& setConfig.gamesPerSet == 1);
 	}
 	
-	hidden function isTiebreak(config, teamScore, rivalScore) {
+	hidden function isTiebreak() {
+		return false;//game instanceof Tiebreak;
+	}
+	
+	hidden function isTiebreakNext(config, teamScore, rivalScore) {
 		return (config.gamesPerSet == 1)
 			|| (teamScore == config.gamesPerSet
 				&& rivalScore == config.gamesPerSet

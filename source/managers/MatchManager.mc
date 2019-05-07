@@ -74,6 +74,7 @@ module MatchManager {
     	Storage.setValue(Properties.CURRENT_MATCH, $.match.toDictionary());
     	
 		//savePointDetails();
+		savePointDetails(team);
 	}
 	
 	function undoLastPoint() {
@@ -138,7 +139,7 @@ module MatchManager {
     	Storage.setValue(Properties.POINT_DETAILS, details);
 	}
 	
-	function savePointDetails() {
+	function savePointDetailsOLD() {
 		if ($.match != null) {
 			var pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
 			
@@ -156,6 +157,31 @@ module MatchManager {
 	    	};
 			
 			pointDetails.add(dictionary);
+			
+			Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, pointDetails);
+		}
+	}
+	
+	function savePointDetails(team) {
+		if ($.match != null) {
+			var pointDetails = Storage.getValue(Properties.POINT_DETAILS + "_" + $.match.id);
+			
+			if (pointDetails == null) {
+				pointDetails = {
+					"match" => $.match.id,
+					"config" => FormatUtils.formatConfigDetails($.match.matchConfig),
+					"points" => "" + team,
+					"times" => "" + $.lastPointLength
+				};
+			} else {
+				var pointsString = pointDetails.get("points");
+				pointsString += team;
+				pointDetails.put("points", pointsString);
+				
+				var timesString = pointDetails.get("times");
+				timesString += "|" + $.lastPointLength;
+				pointDetails.put("times", timesString);
+			}
 			
 			Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, pointDetails);
 		}

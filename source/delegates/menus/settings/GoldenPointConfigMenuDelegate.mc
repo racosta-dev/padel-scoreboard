@@ -1,6 +1,8 @@
 using Toybox.WatchUi;
 using Toybox.System;
 
+using MatchConstants;
+
 class GoldenPointConfigMenuDelegate extends WatchUi.Menu2InputDelegate {
 
     function initialize() {
@@ -9,11 +11,11 @@ class GoldenPointConfigMenuDelegate extends WatchUi.Menu2InputDelegate {
 
     function onSelect(item) {
         if (item.getId() == :GoldenPointConfig_Yes) {
-            MatchManager.setGoldenPoint(true);
+            MatchManager.setGoldenPoint(MatchConstants.GOLDEN_POINT_YES);
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
             ViewManager.freeGoldenPointConfigMenu();
         } else if (item.getId() == :GoldenPointConfig_No) {
-            MatchManager.setGoldenPoint(false);
+            MatchManager.setGoldenPoint(MatchConstants.GOLDEN_POINT_NO);
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
             ViewManager.freeGoldenPointConfigMenu();
         }

@@ -5,9 +5,13 @@ module MatchConstants {
 	const AWAY_TEAM = 1;
 	
 	// Tiebreak
-	const TIEBREAK_YES = 0;
-	const TIEBREAK_NO = 1;
+	const TIEBREAK_NO = 2;
+	const TIEBREAK_YES = 1;
 	const TIEBREAK_EXCEPT_IN_LAST_SET = 2;
+	
+	// Golden point
+	const GOLDEN_POINT_NO = 0;
+	const GOLDEN_POINT_YES = 1;
 	
 	// Score names
 	const SCORE_NAMES = [ "0", "15", "30", "40", "A" ];

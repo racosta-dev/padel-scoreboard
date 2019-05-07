@@ -30,4 +30,8 @@ module FormatUtils {
 		var hours = duration / 3600;
 		return hours.format("%02d") + ":" + minutes.format("%02d") + ":" + seconds.format("%02d");
 	}
+	
+	function formatConfigDetails(config) {
+		return config.startingServer + "|" + config.setsPerMatch + "|" + config.tiebreak + "|" + config.goldenPoint + "|" + config.gamesPerSet;
+	}
 }
