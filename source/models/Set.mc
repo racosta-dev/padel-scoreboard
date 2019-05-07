@@ -20,7 +20,7 @@ class Set {
 		homeScore = 0;
 		awayScore = 0;
 		server = startingServer;
-		if (isTiebreak(setConfig, homeScore, awayScore)) {
+		if (isTiebreakNext(setConfig, homeScore, awayScore)) {
 			game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
 		} else {
 			game = new Game(MatchConstants.POINTS_PER_GAME);
@@ -48,7 +48,7 @@ class Set {
 		awayScore = dictionary.get("awayScore");
 		server = dictionary.get("server");
 	
-		if (isTiebreak(setConfig, homeScore, awayScore)) {
+		if (isTiebreakNext(setConfig, homeScore, awayScore)) {
 			game = new Tiebreak(MatchConstants.POINTS_PER_TIEBREAK);
 		} else {
 			game = new Game(MatchConstants.POINTS_PER_GAME);
@@ -120,7 +120,7 @@ class Set {
 	}
 	
 	hidden function isTiebreak() {
-		return false;//game instanceof Tiebreak;
+		return game instanceof Tiebreak;
 	}
 	
 	hidden function isTiebreakNext(config, teamScore, rivalScore) {

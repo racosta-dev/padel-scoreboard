@@ -5,7 +5,7 @@ module MatchConstants {
 	const AWAY_TEAM = 1;
 	
 	// Tiebreak
-	const TIEBREAK_NO = 2;
+	const TIEBREAK_NO = 0;
 	const TIEBREAK_YES = 1;
 	const TIEBREAK_EXCEPT_IN_LAST_SET = 2;
 	
