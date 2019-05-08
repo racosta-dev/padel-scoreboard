@@ -2,6 +2,7 @@ using Toybox.WatchUi;
 using Toybox.Application.Storage;
 
 using ViewManager;
+using AppConstants.Properties;
 
 class MatchDelegate extends WatchUi.BehaviorDelegate {
 
