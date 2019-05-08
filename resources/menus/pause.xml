@@ -8,6 +8,8 @@
 		label="@Strings.Pause_DeletePointsData" />
 	<menu-item id="Pause_SendPointsData"
 		label="@Strings.Pause_SendPointsData" />
+	<menu-item id="Pause_ResetAppData"
+		label="@Strings.Pause_ResetAppData" />
 
 	<menu-item id="Pause_Exit" label="@Strings.Pause_Exit" />
 </menu2>

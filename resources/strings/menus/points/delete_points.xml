@@ -1,0 +1,6 @@
+<strings>
+    <string id="DeletePoints_Title">Delete points data</string>
+
+    <string id="DeletePoints_Resume">Resume</string>
+    <string id="DeletePoints_All">Delete everything</string>
+</strings>

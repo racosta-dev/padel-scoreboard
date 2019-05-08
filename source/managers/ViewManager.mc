@@ -11,6 +11,9 @@ var serverConfigMenu;
 var setsConfigMenu;
 var tiebreakConfigMenu;
 
+var deletePointsMenu;
+var sendPointsMenu;
+
 module ViewManager {
 
 	function padelScoreboardView() {
@@ -93,6 +96,22 @@ module ViewManager {
 		return $.tiebreakConfigMenu;
 	}
 	
+	function deletePointsMenu() {
+		if ($.deletePointsMenu == null) {
+			$.deletePointsMenu = new DeletePointsMenuView();
+		}
+		
+		return $.deletePointsMenu;
+	}
+	
+	function sendPointsMenu() {
+		if ($.sendPointsMenu == null) {
+			$.sendPointsMenu = new SendPointsMenuView();
+		}
+		
+		return $.sendPointsMenu;
+	}
+	
 	function freeInitialMenu() {
 		$.initialMenu = null;
 	}
@@ -121,5 +140,11 @@ module ViewManager {
 		$.tiebreakConfigMenu = null;
 	}
 
+	function freeDeletePointsMenu() {
+		$.deletePointsMenu = null;
+	}
 
+	function freeSendPointsMenu() {
+		$.sendPointsMenu = null;
+	}
 }

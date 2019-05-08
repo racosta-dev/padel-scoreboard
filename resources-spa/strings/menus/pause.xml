@@ -6,6 +6,7 @@
     <string id="Pause_NewMatch">Nuevo partido</string>
     <string id="Pause_DeletePointsData">Borrar datos de puntos</string>
     <string id="Pause_SendPointsData">Enviar datos de puntos</string>
+    <string id="Pause_ResetAppData">Reiniciar aplicación</string>
     
     <string id="Pause_Exit">Salir</string>
 </strings>

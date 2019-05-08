@@ -34,6 +34,7 @@ class InitialMenuDelegate extends WatchUi.Menu2InputDelegate {
         } else if (item.getId() == :Initial_Exit) {
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
             System.exit();
+            return true;
         }
     }
 

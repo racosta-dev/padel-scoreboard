@@ -1,0 +1,4 @@
+<menu2 id="DeletePointsMenu" title="@Strings.DeletePoints_Title">
+    <menu-item id="DeletePoints_Resume" label="@Strings.DeletePoints_Resume" />
+    <menu-item id="DeletePoints_All" label="@Strings.DeletePoints_All" />
+</menu2>

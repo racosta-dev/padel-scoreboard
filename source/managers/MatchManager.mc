@@ -119,10 +119,31 @@ module MatchManager {
 		matchConfig.gamesPerSet = gamesPerSet;
 	}
 	
-	function deletePointsData() {
+	function resetAppData() {
 		Storage.clearValues();
 		$.match = null;
 		$.pointDetails = null;
+		$.times = null;
+	}
+	
+	function deleteAllPointsData() {
+		var details = Storage.getValue(Properties.POINT_DETAILS);
+		
+		if (details != null && details.size() > 0) {
+			for (var i = 0; i < details.size(); i++) {
+				deletePointsData(details[i]);
+			}
+		}
+	}
+	
+	function deletePointsData(matchId) {
+		if ($.match.id != matchId) {
+			var details = Storage.getValue(Properties.POINT_DETAILS);
+			details.remove(matchId);
+			
+			Storage.deleteValue(Properties.POINT_DETAILS + "_" + matchId);
+			Storage.setValue(Properties.POINT_DETAILS, details);
+		}
 	}
 	
 	function initPointDetails() {
@@ -157,6 +178,10 @@ module MatchManager {
 			}
 			
 		}
+	}
+	
+	function sendPointsData(matchId) {
+		CommManager.send(Storage.getValue(Properties.POINT_DETAILS + "_" + matchId));
 	}
 	
 	function sendPointDetails() {
