@@ -35,12 +35,12 @@ class DeletePointsMenuView extends WatchUi.Menu2 {
     	
     		if (details.size() > 1) {
 		        addItem(new MenuItem(WatchUi.loadResource(Rez.Strings.DeletePoints_All),
-		        					 "(" + details.size() - 1 + ")",
+		        					 "(" + (details.size() - 1) + ")",
 		        					 :DeletePoints_All,
 		        					 {}));
 	    	
 		    	for (var i = 0; i < details.size(); i++) {
-					if ($.match.id != details[i]) {	    		
+					if ($.match != null && $.match.id != details[i]) {
 		        		addItem(new MenuItem(details[i] + "",
 				        					 "",
 				        					 details[i],

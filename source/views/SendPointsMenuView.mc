@@ -32,11 +32,13 @@ class SendPointsMenuView extends WatchUi.Menu2 {
     						 {}));
     	
     	if (details != null && details.size() > 0) {
-	    	for (var i = 0; i < details.size(); i++) {		
-        		addItem(new MenuItem(details[i] + "",
-		        					 "",
-		        					 details[i],
-		        					 {}));
+	    	for (var i = 0; i < details.size(); i++) {	
+	    		if ($.match != null && $.match.id != details[i]) {	
+		    		addItem(new MenuItem(details[i] + "",
+			        					 "",
+			        					 details[i],
+			        					 {}));
+		        }
 	    	}
     	}
     }

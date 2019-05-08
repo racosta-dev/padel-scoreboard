@@ -12,11 +12,11 @@ class SendPointsMenuDelegate extends WatchUi.Menu2InputDelegate {
     function onSelect(item) {
         if (item.getId() == :SendPoints_Resume) {
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
-            ViewManager.freeDeletePointsMenu();
+            ViewManager.freeSendPointsMenu();
         } else {
         	MatchManager.sendPointsData(item.getId());
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
-            ViewManager.freeDeletePointsMenu();
+            ViewManager.freeSendPointsMenu();
             WatchUi.pushView(ViewManager.pauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
         }
     }

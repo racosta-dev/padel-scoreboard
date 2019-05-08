@@ -90,6 +90,10 @@ module MatchManager {
 	}
 	
 	function startMatch() {
+		if ($.match != null) {
+	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
+    	}
+	
     	Storage.deleteValue(Properties.LAST_POINT);
     	Storage.deleteValue(Properties.LAST_MATCH_LENGTH);
     	Storage.deleteValue(Properties.TIMES);

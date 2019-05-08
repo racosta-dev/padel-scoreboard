@@ -1,4 +1,5 @@
 using Toybox.WatchUi;
+using Toybox.Application.Storage;
 
 using ViewManager;
 
@@ -35,6 +36,7 @@ class MatchDelegate extends WatchUi.BehaviorDelegate {
 		}
 		
 		if ($.match != null && $.match.winner != null) {
+		    Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
 			WatchUi.switchToView(ViewManager.resultView(), new ResultDelegate(), WatchUi.SLIDE_UP);
 		}
 		
