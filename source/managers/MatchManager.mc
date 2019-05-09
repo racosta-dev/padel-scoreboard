@@ -166,7 +166,7 @@ module MatchManager {
 			
 			if ($.pointDetails == null) {
 				$.pointDetails = {
-					"match" => $.match.id,
+					"match" => "" + $.match.id,
 					"config" => FormatUtils.formatConfigDetails($.match.matchConfig),
 					"points" => "" + team,
 					"times" => "" + $.lastPointLength

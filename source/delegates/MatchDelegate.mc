@@ -19,6 +19,17 @@ class MatchDelegate extends WatchUi.BehaviorDelegate {
         if (keyEvent.getKey() == 4) {
         	WatchUi.pushView(ViewManager.pauseMenu(), new PauseMenuDelegate(), WatchUi.SLIDE_UP);
         }
+        
+        if (keyEvent.getKey() == 8) {
+        	MatchManager.scoreHome();
+        	updateChanges();
+        }
+        
+        if (keyEvent.getKey() == 13) {
+        	MatchManager.scoreAway();
+        	updateChanges();
+        }
+        
         return true;
     }
     
@@ -36,14 +47,18 @@ class MatchDelegate extends WatchUi.BehaviorDelegate {
 			MatchManager.scoreAway();
 		}
 		
+		updateChanges();
+		
+		return true;
+	}
+	
+	hidden function updateChanges() {
 		if ($.match != null && $.match.winner != null) {
 		    Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
 			WatchUi.switchToView(ViewManager.resultView(), new ResultDelegate(), WatchUi.SLIDE_UP);
 		}
 		
 		WatchUi.requestUpdate();
-		
-		return true;
 	}
 
 }

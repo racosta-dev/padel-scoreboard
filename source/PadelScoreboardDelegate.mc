@@ -23,5 +23,9 @@ class PadelScoreboardDelegate extends WatchUi.BehaviorDelegate {
         }
         return true;
     }
+    
+    function onBack() {
+    	System.exit();
+    }
 
 }
