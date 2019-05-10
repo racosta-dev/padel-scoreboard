@@ -86,12 +86,16 @@ module MatchManager {
 			$.match = lastPointMatch;
 			
 			Storage.setValue(Properties.CURRENT_MATCH, dictionary);
+			Storage.deleteValue(Properties.LAST_POINT);
+    	
+			savePointDetails(MatchConstants.UNDO_LAST_POINT);
 		}
 	}
 	
 	function startMatch() {
 		if ($.match != null) {
 	    	Storage.setValue(Properties.POINT_DETAILS + "_" + $.match.id, $.pointDetails);
+	    	$.pointDetails = null;
     	}
 	
     	Storage.deleteValue(Properties.LAST_POINT);

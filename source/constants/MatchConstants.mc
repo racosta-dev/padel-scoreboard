@@ -4,6 +4,8 @@ module MatchConstants {
 	const HOME_TEAM = 0;
 	const AWAY_TEAM = 1;
 	
+	const UNDO_LAST_POINT = 2;
+	
 	// Tiebreak
 	const TIEBREAK_NO = 0;
 	const TIEBREAK_YES = 1;
