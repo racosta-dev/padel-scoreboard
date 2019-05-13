@@ -21,7 +21,6 @@
             <iq:product id="vivoactive3d"/>
             <iq:product id="vivoactive3m"/>
             <iq:product id="vivoactive3mlte"/>
-            <iq:product id="wearable2019"/>
         </iq:products>
         <iq:permissions>
             <iq:uses-permission id="Communications"/>
